@@ -9,36 +9,38 @@
 namespace Umbrella\FAKLiteBundle\Utility;
 
 
-use Umbrella\JCLibPack\JCJson;
+use Umbrella\FAKLiteBundle\Entity\FAKUser;
+use Umbrella\FAKLiteBundle\Entity\FAKUserApplication;
+use Umbrella\FAKLiteBundle\Entity\FAKUserPhone;
 
 /**
  * Class FAKUserBuilder
  *
- * @package App\v1
+ * @package Umbrella\FAKLiteBundle\Utility
  */
 class FAKUserBuilder
 {
 	/**
-	 * @param \Umbrella\JCLibPack\JCJson $Json
-	 * @return \App\v1\FAKUser
+	 * @param array $data
+	 * @return \Umbrella\FAKLiteBundle\Entity\FAKUser
 	 * @throws \Exception
 	 */
-	static public function buildFromJson(JCJson $Json) :FAKUser{
+	static public function buildFromJson(array $data) :FAKUser{
 
-		if (!$Json->has('id'))
+		if (!isset($data['id']))
 			throw new \Exception('FAKUserBuilder: malformed json-response.');
 
-		$User = new FAKUser($Json->get('id'));
+		$User = new FAKUser($data['id']);
 
-		if ($Json->has('phone')){
+		if (isset($data['phone'])){
 			$User->setPhone(
-				new FAKUserPhone($Json['phone']['country_prefix'], $Json['phone']['national_number'])
+				new FAKUserPhone($data['phone']['country_prefix'], $data['phone']['national_number'])
 			);
 		}
 
-		if ($Json->has('application')){
+		if (isset($data['application'])){
 			$User->setApplication(
-				new FAKUserApplication($Json['application']['id'])
+				new FAKUserApplication($data['application']['id'])
 			);
 		}
 

@@ -10,17 +10,20 @@ namespace Umbrella\FAKLiteBundle\Service;
 
 
 use Psr\Http\Message\ResponseInterface;
-use Umbrella\JCLibPack\JCJson;
+use Umbrella\FAKLiteBundle\Entity\FAKUser;
+use Umbrella\FAKLiteBundle\Service\Exception\FAKRequestException;
+use Umbrella\FAKLiteBundle\Utility\FAKUserBuilder;
+
 
 /**
  * Class AccountKitService
  *
- * @package App\v1
+ * @package Umbrella\FAKLiteBundle\Service
  */
 class AccountKitService
 {
-	private const REQUEST_URL = 'https://graph.accountkit.com';
-	private const API_VERSION = 'v1.3';
+	const REQUEST_URL = 'https://graph.accountkit.com';
+	const API_VERSION = 'v1.3';
 
 	/**
 	 * @var \GuzzleHttp\Client
@@ -40,9 +43,17 @@ class AccountKitService
 		$this->RestClient = new \GuzzleHttp\Client(['base_uri' => static::REQUEST_URL]);
 	}
 
+	public function getUri() :string{
+
+	}
+
+	public function getApiVersion() :string{
+
+	}
+
 	/**
 	 * @param string $accessToken
-	 * @return \App\v1\FAKUser
+	 * @return \Umbrella\FAKLiteBundle\Entity\FAKUser
 	 * @throws \Exception
 	 */
 	public function getByAccessToken(string $accessToken) :FAKUser {
@@ -76,10 +87,10 @@ class AccountKitService
 
 	/**
 	 * @param null|\Psr\Http\Message\ResponseInterface $Response
-	 * @return null|\Umbrella\JCLibPack\JCJson
+	 * @return array
 	 */
-	private function decodeResponse(?ResponseInterface $Response) :?JCJson{
+	private function decodeResponse(?ResponseInterface $Response) :array{
 
-		return JCJson::tryFactory($Response->getBody()->getContents(), null);
+		return \GuzzleHttp\json_decode($Response->getBody()->getContents(), true);
 	}
 }
