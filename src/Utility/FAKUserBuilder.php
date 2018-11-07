@@ -12,6 +12,7 @@ namespace Umbrella\FAKLiteBundle\Utility;
 use Umbrella\FAKLiteBundle\Entity\FAKUser;
 use Umbrella\FAKLiteBundle\Entity\FAKUserApplication;
 use Umbrella\FAKLiteBundle\Entity\FAKUserPhone;
+use Umbrella\FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException;
 
 /**
  * Class FAKUserBuilder
@@ -23,12 +24,12 @@ class FAKUserBuilder
 	/**
 	 * @param array $data
 	 * @return \Umbrella\FAKLiteBundle\Entity\FAKUser
-	 * @throws \Exception
+	 * @throws \Umbrella\FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
 	 */
 	static public function buildFromJson(array $data) :FAKUser{
 
 		if (!isset($data['id']))
-			throw new \Exception('FAKUserBuilder: malformed json-response.');
+			throw new MalformedJSONException('FAKUserBuilder: malformed json-response.');
 
 		$User = new FAKUser($data['id']);
 

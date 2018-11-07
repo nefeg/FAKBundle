@@ -4,7 +4,7 @@
   "keywords": ["facebook", "security", "accountkit"],
   "type": "symfony-bundle",
   "license": "MIT",
-  "version": "0.1-dev",
+  "version": "0.2-dev",
   "authors": [
     { "name": "Evgeny Nefedkin",
       "email": "evgeny.nefedkin@umbrellait.com"
