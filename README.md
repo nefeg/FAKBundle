@@ -3,13 +3,6 @@ FAK (Facebook Account Kit) Lite Bundle
 
 Usage:
 --------
- - run job by ttl
- - run job at time
- - repeat jobs by period
- - remote/local job storage (redis/file)
- - distributing job list for concurrency execution
- - decentralized structure
- 
  ```
  import Umbrella\FAKLiteBundle\Service;
  
@@ -31,3 +24,8 @@ https://github.com/umbrella-evgeny-nefedkin/FAKBundle
 #### From Composer
 
 	composer require umbrella-evgeny-nefedkin/accountkit-lite
+	
+License
+-------
+
+MIT see https://github.com/umbrella-evgeny-nefedkin/shlac/blob/master/LICENSE
