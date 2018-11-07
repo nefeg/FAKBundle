@@ -11,7 +11,8 @@ namespace Umbrella\FAKLiteBundle\Service;
 
 use Psr\Http\Message\ResponseInterface;
 use Umbrella\FAKLiteBundle\Entity\FAKUser;
-use Umbrella\FAKLiteBundle\Service\Exception\FAKRequestException;
+use Umbrella\FAKLiteBundle\Service\Exception\DependencyException;
+use Umbrella\FAKLiteBundle\Service\Exception\RequestException;
 use Umbrella\FAKLiteBundle\Utility\FAKUserBuilder;
 
 
@@ -28,43 +29,72 @@ class AccountKitService
 	/**
 	 * @var \GuzzleHttp\Client
 	 */
-	private $RestClient;
+	private $Client;
+
+	/**
+	 * @var string
+	 */
+	private $requestUri;
+	/**
+	 * @var string
+	 */
+	private $apiVersion;
 
 	/**
 	 * AccountKitService constructor.
 	 *
-	 * @throws \Exception
+	 * @param string $requestUri
+	 * @param string $apiVersion
+	 * @throws \Umbrella\FAKLiteBundle\Service\Exception\DependencyException
 	 */
-	public function __construct(){
+	public function __construct(string $requestUri = self::REQUEST_URL, string $apiVersion = self::API_VERSION){
+
+		$this->requestUri = $requestUri;
+		$this->apiVersion = $apiVersion;
 
 		if (!class_exists('\GuzzleHttp\Client'))
-			throw new \Exception('Class not exist: GuzzleHttp\Client.');
+			throw new DependencyException('Class not exist: GuzzleHttp\Client.');
 
-		$this->RestClient = new \GuzzleHttp\Client(['base_uri' => static::REQUEST_URL]);
-	}
-
-	public function getUri() :string{
-
-	}
-
-	public function getApiVersion() :string{
+		$this->Client = new \GuzzleHttp\Client(['base_uri' => $this->getUri()]);
 
 	}
 
 	/**
-	 * @param string $accessToken
-	 * @return \Umbrella\FAKLiteBundle\Entity\FAKUser
-	 * @throws \Exception
+	 * @return \GuzzleHttp\Client
 	 */
-	public function getByAccessToken(string $accessToken) :FAKUser {
+	protected function getClient() :\GuzzleHttp\Client{
+		return $this->Client;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getUri() :string{
+		return $this->requestUri;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getApiVersion() :string{
+		return $this->apiVersion;
+	}
+
+	/**
+	 * @param string $accessToken
+	 * @return \Umbrella\FAKLiteBundle\Entity\FAKUser|NULL
+	 * @throws \Umbrella\FAKLiteBundle\Service\Exception\RequestException
+	 * @throws \Umbrella\FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
+	 */
+	public function getByAccessToken(string $accessToken) :?FAKUser {
 
 		$User = NULL;
 
 		try {
-			$ackResponse = $this->RestClient->get(static::REQUEST_URL . '/' . static::API_VERSION . '/me/?access_token=' . $accessToken);
+			$ackResponse = $this->getClient()->get($this->getUri() . '/' . $this->getApiVersion() . '/me/?access_token=' . $accessToken);
 
 			if ($ackResponse->getStatusCode() != 200)
-				throw new FAKRequestException('FAK request error: ' . $ackResponse->getStatusCode());
+				throw new RequestException('FAK request error: ' . $ackResponse->getStatusCode());
 
 
 		} catch (\GuzzleHttp\Exception\ClientException $FAKException) {
@@ -72,9 +102,9 @@ class AccountKitService
 			$Json = $this->decodeResponse($FAKException->getResponse());
 
 			if (isset($Json['error']['message']))
-				throw new FAKRequestException($Json['error']['message']);
+				throw new RequestException($Json['error']['message']);
 
-			throw new FAKRequestException('Unknown Error.');
+			throw new RequestException('Unknown Error.');
 		}
 
 

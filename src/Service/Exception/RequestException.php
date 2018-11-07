@@ -9,7 +9,7 @@
 namespace Umbrella\FAKLiteBundle\Service\Exception;
 
 
-class FAKRequestException extends \Exception
+class RequestException extends ServiceException
 {
 
 }
