@@ -1,17 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: omni
- * Date: 02.11.2018
- * Time: 23:26
- */
 
-namespace Umbrella\FAKLiteBundle\Entity;
+namespace FAKLiteBundle\Entity;
 
 /**
  * Class FAKUser
  *
- * @package Umbrella\FAKLiteBundle
+ * @package FAKLiteBundle
  */
 class FAKUser
 {
@@ -21,12 +15,12 @@ class FAKUser
 	private $id;
 
 	/**
-	 * @var \Umbrella\FAKLiteBundle\Entity\FAKUserPhone
+	 * @var \FAKLiteBundle\Entity\FAKUserPhone
 	 */
 	private $phone;
 
 	/**
-	 * @var \Umbrella\FAKLiteBundle\Entity\FAKUserApplication
+	 * @var \FAKLiteBundle\Entity\FAKUserApplication
 	 */
 	private $application;
 
@@ -48,14 +42,14 @@ class FAKUser
 	}
 
 	/**
-	 * @return \Umbrella\FAKLiteBundle\Entity\FAKUserPhone
+	 * @return \FAKLiteBundle\Entity\FAKUserPhone
 	 */
 	public function getPhone(): ?FAKUserPhone {
 		return $this->phone;
 	}
 
 	/**
-	 * @param \Umbrella\FAKLiteBundle\Entity\FAKUserPhone $phone
+	 * @param \FAKLiteBundle\Entity\FAKUserPhone $phone
 	 * @return FAKUser
 	 */
 	public function setPhone(FAKUserPhone $phone) {
@@ -65,14 +59,14 @@ class FAKUser
 	}
 
 	/**
-	 * @return \Umbrella\FAKLiteBundle\Entity\FAKUserApplication
+	 * @return \FAKLiteBundle\Entity\FAKUserApplication
 	 */
 	public function getApplication(): ?FAKUserApplication {
 		return $this->application;
 	}
 
 	/**
-	 * @param \Umbrella\FAKLiteBundle\Entity\FAKUserApplication $application
+	 * @param \FAKLiteBundle\Entity\FAKUserApplication $application
 	 * @return FAKUser
 	 */
 	public function setApplication(FAKUserApplication $application) {

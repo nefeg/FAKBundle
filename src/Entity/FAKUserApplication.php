@@ -1,17 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: omni
- * Date: 02.11.2018
- * Time: 23:29
- */
 
-namespace Umbrella\FAKLiteBundle\Entity;
+namespace FAKLiteBundle\Entity;
 
 /**
  * Class FAKUserApplication
  *
- * @package Umbrella\FAKLiteBundle
+ * @package FAKLiteBundle
  */
 class FAKUserApplication
 {

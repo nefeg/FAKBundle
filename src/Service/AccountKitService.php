@@ -1,25 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: omni
- * Date: 02.11.2018
- * Time: 21:50
- */
 
-namespace Umbrella\FAKLiteBundle\Service;
-
+namespace FAKLiteBundle\Service;
 
 use Psr\Http\Message\ResponseInterface;
-use Umbrella\FAKLiteBundle\Entity\FAKUser;
-use Umbrella\FAKLiteBundle\Service\Exception\DependencyException;
-use Umbrella\FAKLiteBundle\Service\Exception\RequestException;
-use Umbrella\FAKLiteBundle\Utility\FAKUserBuilder;
-
+use FAKLiteBundle\Entity\FAKUser;
+use FAKLiteBundle\Service\Exception\DependencyException;
+use FAKLiteBundle\Service\Exception\RequestException;
+use FAKLiteBundle\Utility\FAKUserBuilder;
 
 /**
  * Class AccountKitService
  *
- * @package Umbrella\FAKLiteBundle\Service
+ * @package FAKLiteBundle\Service
  */
 class AccountKitService
 {
@@ -45,7 +37,7 @@ class AccountKitService
 	 *
 	 * @param string $requestUri
 	 * @param string $apiVersion
-	 * @throws \Umbrella\FAKLiteBundle\Service\Exception\DependencyException
+	 * @throws \FAKLiteBundle\Service\Exception\DependencyException
 	 */
 	public function __construct(string $requestUri = self::REQUEST_URL, string $apiVersion = self::API_VERSION){
 
@@ -82,9 +74,9 @@ class AccountKitService
 
 	/**
 	 * @param string $accessToken
-	 * @return \Umbrella\FAKLiteBundle\Entity\FAKUser|NULL
-	 * @throws \Umbrella\FAKLiteBundle\Service\Exception\RequestException
-	 * @throws \Umbrella\FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
+	 * @return \FAKLiteBundle\Entity\FAKUser|NULL
+	 * @throws \FAKLiteBundle\Service\Exception\RequestException
+	 * @throws \FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
 	 */
 	public function getByAccessToken(string $accessToken) :?FAKUser {
 

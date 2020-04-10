@@ -1,30 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: omni
- * Date: 02.11.2018
- * Time: 23:30
- */
 
-namespace Umbrella\FAKLiteBundle\Utility;
+namespace FAKLiteBundle\Utility;
 
-
-use Umbrella\FAKLiteBundle\Entity\FAKUser;
-use Umbrella\FAKLiteBundle\Entity\FAKUserApplication;
-use Umbrella\FAKLiteBundle\Entity\FAKUserPhone;
-use Umbrella\FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException;
+use FAKLiteBundle\Entity\FAKUser;
+use FAKLiteBundle\Entity\FAKUserApplication;
+use FAKLiteBundle\Entity\FAKUserPhone;
+use FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException;
 
 /**
  * Class FAKUserBuilder
  *
- * @package Umbrella\FAKLiteBundle\Utility
+ * @package FAKLiteBundle\Utility
  */
 class FAKUserBuilder
 {
 	/**
 	 * @param array $data
-	 * @return \Umbrella\FAKLiteBundle\Entity\FAKUser
-	 * @throws \Umbrella\FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
+	 * @return \FAKLiteBundle\Entity\FAKUser
+	 * @throws \FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
 	 */
 	static public function buildFromJson(array $data) :FAKUser{
 
