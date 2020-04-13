@@ -1,6 +1,6 @@
 <?php
 
-namespace FAKLiteBundle\Service\Exception;
+namespace Aimchat\FAKLiteBundle\Service\Exception;
 
 class DependencyException extends \Exception
 {

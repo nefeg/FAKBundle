@@ -4,7 +4,7 @@ FAK (Facebook Account Kit) Lite Bundle
 Usage:
 --------
  ```
- import Umbrella\FAKLiteBundle\Service;
+ import Aimchat\FAKLiteBundle\Service;
  
  $FakService = new AccountKitService();
  $FAKUser =  $FakService->getByAccessToken($accessToken);

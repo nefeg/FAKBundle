@@ -1,23 +1,23 @@
 <?php
 
-namespace FAKLiteBundle\Utility;
+namespace Aimchat\FAKLiteBundle\Utility;
 
-use FAKLiteBundle\Entity\FAKUser;
-use FAKLiteBundle\Entity\FAKUserApplication;
-use FAKLiteBundle\Entity\FAKUserPhone;
-use FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException;
+use Aimchat\FAKLiteBundle\Entity\FAKUser;
+use Aimchat\FAKLiteBundle\Entity\FAKUserApplication;
+use Aimchat\FAKLiteBundle\Entity\FAKUserPhone;
+use Aimchat\FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException;
 
 /**
  * Class FAKUserBuilder
  *
- * @package FAKLiteBundle\Utility
+ * @package Aimchat\FAKLiteBundle\Utility
  */
 class FAKUserBuilder
 {
 	/**
 	 * @param array $data
-	 * @return \FAKLiteBundle\Entity\FAKUser
-	 * @throws \FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
+	 * @return \Aimchat\FAKLiteBundle\Entity\FAKUser
+	 * @throws \Aimchat\FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
 	 */
 	static public function buildFromJson(array $data) :FAKUser{
 

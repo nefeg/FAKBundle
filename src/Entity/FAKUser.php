@@ -1,11 +1,11 @@
 <?php
 
-namespace FAKLiteBundle\Entity;
+namespace Aimchat\FAKLiteBundle\Entity;
 
 /**
  * Class FAKUser
  *
- * @package FAKLiteBundle
+ * @package Aimchat\FAKLiteBundle
  */
 class FAKUser
 {
@@ -15,12 +15,12 @@ class FAKUser
 	private $id;
 
 	/**
-	 * @var \FAKLiteBundle\Entity\FAKUserPhone
+	 * @var \Aimchat\FAKLiteBundle\Entity\FAKUserPhone
 	 */
 	private $phone;
 
 	/**
-	 * @var \FAKLiteBundle\Entity\FAKUserApplication
+	 * @var \Aimchat\FAKLiteBundle\Entity\FAKUserApplication
 	 */
 	private $application;
 
@@ -42,14 +42,14 @@ class FAKUser
 	}
 
 	/**
-	 * @return \FAKLiteBundle\Entity\FAKUserPhone
+	 * @return \Aimchat\FAKLiteBundle\Entity\FAKUserPhone
 	 */
 	public function getPhone(): ?FAKUserPhone {
 		return $this->phone;
 	}
 
 	/**
-	 * @param \FAKLiteBundle\Entity\FAKUserPhone $phone
+	 * @param \Aimchat\FAKLiteBundle\Entity\FAKUserPhone $phone
 	 * @return FAKUser
 	 */
 	public function setPhone(FAKUserPhone $phone) {
@@ -59,14 +59,14 @@ class FAKUser
 	}
 
 	/**
-	 * @return \FAKLiteBundle\Entity\FAKUserApplication
+	 * @return \Aimchat\FAKLiteBundle\Entity\FAKUserApplication
 	 */
 	public function getApplication(): ?FAKUserApplication {
 		return $this->application;
 	}
 
 	/**
-	 * @param \FAKLiteBundle\Entity\FAKUserApplication $application
+	 * @param \Aimchat\FAKLiteBundle\Entity\FAKUserApplication $application
 	 * @return FAKUser
 	 */
 	public function setApplication(FAKUserApplication $application) {

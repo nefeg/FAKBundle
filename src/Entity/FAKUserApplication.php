@@ -1,11 +1,11 @@
 <?php
 
-namespace FAKLiteBundle\Entity;
+namespace Aimchat\FAKLiteBundle\Entity;
 
 /**
  * Class FAKUserApplication
  *
- * @package FAKLiteBundle
+ * @package Aimchat\FAKLiteBundle
  */
 class FAKUserApplication
 {

@@ -1,17 +1,17 @@
 <?php
 
-namespace FAKLiteBundle\Service;
+namespace Aimchat\FAKLiteBundle\Service;
 
 use Psr\Http\Message\ResponseInterface;
-use FAKLiteBundle\Entity\FAKUser;
-use FAKLiteBundle\Service\Exception\DependencyException;
-use FAKLiteBundle\Service\Exception\RequestException;
-use FAKLiteBundle\Utility\FAKUserBuilder;
+use Aimchat\FAKLiteBundle\Entity\FAKUser;
+use Aimchat\FAKLiteBundle\Service\Exception\DependencyException;
+use Aimchat\FAKLiteBundle\Service\Exception\RequestException;
+use Aimchat\FAKLiteBundle\Utility\FAKUserBuilder;
 
 /**
  * Class AccountKitService
  *
- * @package FAKLiteBundle\Service
+ * @package Aimchat\FAKLiteBundle\Service
  */
 class AccountKitService
 {
@@ -37,7 +37,7 @@ class AccountKitService
 	 *
 	 * @param string $requestUri
 	 * @param string $apiVersion
-	 * @throws \FAKLiteBundle\Service\Exception\DependencyException
+	 * @throws \Aimchat\FAKLiteBundle\Service\Exception\DependencyException
 	 */
 	public function __construct(string $requestUri = self::REQUEST_URL, string $apiVersion = self::API_VERSION){
 
@@ -74,9 +74,9 @@ class AccountKitService
 
 	/**
 	 * @param string $accessToken
-	 * @return \FAKLiteBundle\Entity\FAKUser|NULL
-	 * @throws \FAKLiteBundle\Service\Exception\RequestException
-	 * @throws \FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
+	 * @return \Aimchat\FAKLiteBundle\Entity\FAKUser|NULL
+	 * @throws \Aimchat\FAKLiteBundle\Service\Exception\RequestException
+	 * @throws \Aimchat\FAKLiteBundle\Utility\FAKUserBuilder\Exception\MalformedJSONException
 	 */
 	public function getByAccessToken(string $accessToken) :?FAKUser {
 
